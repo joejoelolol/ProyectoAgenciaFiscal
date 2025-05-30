@@ -6,7 +6,7 @@ package com.mycompany.presentacion;
 
 /**
  *
- * @author Tatzu
+ * @author joelr
  */
 public class Presentacion {
 

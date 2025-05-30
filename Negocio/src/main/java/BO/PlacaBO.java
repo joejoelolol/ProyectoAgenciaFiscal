@@ -67,5 +67,14 @@ public class PlacaBO implements IPlacaBO {
             throw new NegocioException("Error al registrar la placa", e);
         }
     }
+    @Override
+    public boolean actualizarPlaca(String serie) throws NegocioException{
+        try{
+            placaDAO.ActualizarEstado(serie);
+            return true;
+        }catch(PersistenciaException e){
+            throw new NegocioException("Error al actualizar", e);
+        }
+    }
     
 }

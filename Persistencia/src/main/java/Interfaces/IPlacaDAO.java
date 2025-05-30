@@ -18,8 +18,11 @@ public interface IPlacaDAO {
      * Metodo para actualizar el estado de la placa cuando se soliciten placas
      * nuevas de un automovil ya registrado.
      *
+     * @param placa
+     * @return 
+     * @throws Excepciones.PersistenciaException
      */
-    Placa ActualizarEstado(String id) throws PersistenciaException;
+    public Placa ActualizarEstado(String serieAutomovil) throws PersistenciaException;
 
     /**
      * Genera un número de placa con el formato 3 letras + guión + 3 dígitos,
@@ -47,4 +50,5 @@ public interface IPlacaDAO {
     Placa registrarPlaca(Placa placa) throws PersistenciaException;
     
     public List<Placa> obtenerPlacas() throws PersistenciaException;
+    public List<Placa> obtenerPlacasPorID(String id) throws PersistenciaException;
 }

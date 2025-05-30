@@ -8,6 +8,7 @@ import Interfaces.IPlacaDAO;
 import Conexion.Conexion;
 import Entidades.Placa;
 import Excepciones.PersistenciaException;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -43,19 +44,16 @@ public class PlacaDAO implements IPlacaDAO {
         if (placa == null) {
             throw new PersistenciaException("La placa esta vacia");
         }
-
         EntityManager em = Conexion.crearConexion();
-
         try {
             if (placa.getIdPlaca() == null) {
 
-            } else {
-                this.ActualizarEstado(placa.getIdPlaca());
             }
-            // Si la placa ya esta registrada se desactiva
+
             Date fechaHoy = new Date();
             placa.setIdPlaca(this.generarNumeroPlaca());
             placa.setFechaRecepcion(fechaHoy);
+            placa.setEstado("Habilitada");
             em.getTransaction().begin();
             em.persist(placa);
             em.getTransaction().commit();
@@ -95,31 +93,66 @@ public class PlacaDAO implements IPlacaDAO {
     }
 
     /**
+     * Metodo para obtener placas mediante su id.
+     *
+     * @param id
+     * @throws Excepciones.PersistenciaException
+     */
+    @Override
+    public List<Placa> obtenerPlacasPorID(String id) throws PersistenciaException {
+        EntityManager em = Conexion.crearConexion();
+        if (id == null) {
+            throw new PersistenciaException("El id es nulo");
+        }
+        try {
+            em.getTransaction().begin();
+            List<Placa> placa = em.createQuery("SELECT p FROM Placa p WHERE p.numeroSerie = :id", Placa.class)
+                    .setParameter("id", id)
+                    .getResultList();
+            return placa;
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            throw new PersistenciaException("No se pudo obtener la placa" + id);
+        } finally {
+            em.close();
+        }
+    }
+
+    /**
      * Metodo para actualizar el estado de la placa cuando se soliciten placas
      * nuevas de un automovil ya registrado.
      *
      */
     @Override
-    public Placa ActualizarEstado(String id) throws PersistenciaException {
+    public Placa ActualizarEstado(String serieAutomovil) throws PersistenciaException {
         EntityManager em = Conexion.crearConexion();
-        if (id == null) {
+        if (serieAutomovil == null) {
             throw new PersistenciaException("id vacio");
         }
         try {
-
-            Placa placa = this.obtenerPlacaPorID(id);
-            placa.setEstado("Inactiva");
-            em.getTransaction().begin();
-            em.merge(placa);
-            em.getTransaction().commit();
+            Placa placa = new Placa();
+            Date fecha = new Date(); // fecha actual
+            List<Placa> placas = this.obtenerPlacasPorID(serieAutomovil);
+//            for (int i = 0; i < placas.size(); i++) {
+//                if (placas.get(i).getEstado().equalsIgnoreCase("Habilitado")
+//                        && placas.get(i).getFechaEmision() == null) {
+//                    placa = placas.get(i);
+//                    placa.setEstado("Deshabilitado");
+//                    placa.setFechaEmision(fecha);
+//                }
+//            }
+//            em.getTransaction().begin();
+//            em.merge(placa);
+//            em.getTransaction().commit();
+//            em.close();
             return placa;
-
-        } catch (PersistenciaException e) {
+        } catch (PersistenciaException pe) {
             em.getTransaction().rollback();
-            throw new PersistenciaException("No se pudo actualizar el estado de la placa");
+            throw new PersistenciaException("No se pudo actualizar la placa");
         } finally {
             em.close();
         }
+
     }
 
     /**

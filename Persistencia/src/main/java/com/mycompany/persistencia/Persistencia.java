@@ -25,19 +25,21 @@ public class Persistencia {
 
     public static void main(String[] args) throws PersistenciaException {
         //Pruebas persona
-        PersonaDAO personad = new PersonaDAO();
+//        PersonaDAO personad = new PersonaDAO();
         Date fechaHoy = new Date();
-        List<Automovil> autos = new ArrayList<>();
-        List<Licencia> licencias = new ArrayList<>();
+//        List<Automovil> autos = new ArrayList<>();
+//        List<Licencia> licencias = new ArrayList<>();
 //        Persona persona = new Persona("b","Joses","c","d","63311122",fechaHoy,licencias,autos);
-////        personad.registrarPersona(persona);
-//        for (int i = 0; i < personad.obtenerClientes().size(); i++) {
-//                 System.out.println(personad.obtenerClientes().get(i).getTelefono());
-//        }
-   
-        //Pruebas placa
-//        PlacaDAO placad = new PlacaDAO();
-//        Placa placa = new Placa("Habilitada","Nuevo",fechaHoy);
+//        personad.registrarPersona(persona);
+//        System.out.println(personad.obtenerPersonaPorRfc("b").getRfc()); 
+//        
+//        Pruebas placa
+        PlacaDAO placad = new PlacaDAO();
+        Placa placa = new Placa("Habilitada","Nuevo",fechaHoy);
+//        List<Placa> placas= placad.obtenerPlacasPorID("LZU-591");
+//        System.out.println(placas.get(0));
+        placad.ActualizarEstado("safalo");
+
 //        placad.registrarPlaca(placa);
 //        System.out.println(placad.obtenerPlacaPorID(placa.getIdPlaca()).getIdPlaca());
         //Pruebas licencia
@@ -48,10 +50,10 @@ public class Persistencia {
 //        System.out.println(l.obtenerLicencias().get(0).getIdLicencia());
 
         //Pruebas Automoviles
-        AutomovilDAO autod = new AutomovilDAO();
-        List<Placa> placas = new ArrayList<>();
-        Automovil auto = new Automovil("SAD22","Rojo","Cadillac","Ford","2A",personad.obtenerPersonas().get(0));
-//        autod.registrarLicencia(auto);
-        System.out.println(autod.obtenerAutomoviles().get(0).getNumeroSerie());
+//        AutomovilDAO autod = new AutomovilDAO();
+//        List<Placa> placas = new ArrayList<>();
+//        Automovil auto = new Automovil("SAD22","Rojo","Cadillac","Ford","2A",personad.obtenerPersonas().get(0));
+////        autod.registrarLicencia(auto);
+//        System.out.println(autod.obtenerAutomoviles().get(0).getNumeroSerie());
     }
 }

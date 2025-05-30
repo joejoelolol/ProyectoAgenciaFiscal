@@ -18,7 +18,7 @@ import javax.persistence.EntityManager;
  */
 public class PersonaDAO implements IPersonaDAO {
 
-    private static PersonaDAO instancePersonaDAO;
+    public static PersonaDAO instancePersonaDAO;
 
     public PersonaDAO() {
     }
@@ -86,6 +86,7 @@ public class PersonaDAO implements IPersonaDAO {
     }
      /**
      * Metodo para obtener una lista de personas.
+     * @param rfc
      * @return Lista de personas.
      * @throws PersistenciaException 
      */

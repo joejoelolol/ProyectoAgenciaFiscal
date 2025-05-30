@@ -30,5 +30,5 @@ public interface IPlacaBO {
      * @throws NegocioException si ocurre un error de negocio o persistencia
      */
     boolean registrarPlaca(PlacaDTO placaDTO) throws NegocioException;
-    
+public boolean actualizarPlaca(String serie) throws NegocioException;
 }

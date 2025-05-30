@@ -22,6 +22,7 @@ public class frmSolicitarPlacas extends javax.swing.JFrame {
      */
     public frmSolicitarPlacas() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -38,8 +39,8 @@ public class frmSolicitarPlacas extends javax.swing.JFrame {
         jLabelNombreFrame = new javax.swing.JLabel();
         jButtonVolver = new javax.swing.JButton();
         jButtonSolicitar = new javax.swing.JButton();
-        jTextFieldNombre = new javax.swing.JTextField();
-        jTextFieldPaterno = new javax.swing.JTextField();
+        jTextFieldMarca = new javax.swing.JTextField();
+        jTextFieldLinea = new javax.swing.JTextField();
         jLabelLinea = new javax.swing.JLabel();
         jTextFieldRFCDueño = new javax.swing.JTextField();
         jLabelModelo = new javax.swing.JLabel();
@@ -47,12 +48,10 @@ public class frmSolicitarPlacas extends javax.swing.JFrame {
         jLabelDatosPersonales = new javax.swing.JLabel();
         jLabelMarca = new javax.swing.JLabel();
         jLabelColor = new javax.swing.JLabel();
-        jTextFieldMaterno = new javax.swing.JTextField();
+        jTextFieldColor = new javax.swing.JTextField();
         jLabelNumeroSerie = new javax.swing.JLabel();
         jTextFieldNumeroSerie = new javax.swing.JTextField();
-        jTextFieldTelefono1 = new javax.swing.JTextField();
-        jButtonVerificarDueno = new javax.swing.JButton();
-        jLabelDueno = new javax.swing.JLabel();
+        jTextFieldModelo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,8 +85,8 @@ public class frmSolicitarPlacas extends javax.swing.JFrame {
 
         jPanelFondo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jButtonVolver.setBackground(new java.awt.Color(204, 204, 204));
         jButtonVolver.setText("Volver");
+        jButtonVolver.setBackground(new java.awt.Color(204, 204, 204));
         jButtonVolver.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,11 +105,11 @@ public class frmSolicitarPlacas extends javax.swing.JFrame {
         });
         jPanelFondo.add(jButtonSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(604, 425, 134, 35));
 
-        jTextFieldNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanelFondo.add(jTextFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 127, -1));
+        jTextFieldMarca.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanelFondo.add(jTextFieldMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 127, -1));
 
-        jTextFieldPaterno.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanelFondo.add(jTextFieldPaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 127, -1));
+        jTextFieldLinea.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanelFondo.add(jTextFieldLinea, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 127, -1));
 
         jLabelLinea.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelLinea.setText("Linea:");
@@ -145,8 +144,8 @@ public class frmSolicitarPlacas extends javax.swing.JFrame {
         jLabelColor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jPanelFondo.add(jLabelColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 94, 31));
 
-        jTextFieldMaterno.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanelFondo.add(jTextFieldMaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 127, -1));
+        jTextFieldColor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanelFondo.add(jTextFieldColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 127, -1));
 
         jLabelNumeroSerie.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelNumeroSerie.setText("Numero de Serie:");
@@ -156,15 +155,8 @@ public class frmSolicitarPlacas extends javax.swing.JFrame {
         jTextFieldNumeroSerie.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanelFondo.add(jTextFieldNumeroSerie, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 127, -1));
 
-        jTextFieldTelefono1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanelFondo.add(jTextFieldTelefono1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 127, -1));
-
-        jButtonVerificarDueno.setText("Verificar Dueño");
-        jPanelFondo.add(jButtonVerificarDueno, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 130, -1));
-
-        jLabelDueno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelDueno.setText("Dueño");
-        jPanelFondo.add(jLabelDueno, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, 130, -1));
+        jTextFieldModelo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanelFondo.add(jTextFieldModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 127, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -186,7 +178,17 @@ public class frmSolicitarPlacas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonVolverActionPerformed
 
     private void jButtonSolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSolicitarActionPerformed
-     
+        try {
+            ControlGUI.getInstancia().AutomovilPlacas(this.jTextFieldNumeroSerie.getText(),
+                    this.jTextFieldMarca.getText(),
+                    this.jTextFieldLinea.getText(),
+                    this.jTextFieldColor.getText(),
+                    this.jTextFieldModelo.getText(),
+                    this.jTextFieldRFCDueño.getText());
+        } catch (NegocioException ex) {
+            Logger.getLogger(frmSolicitarPlacas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jButtonSolicitarActionPerformed
 
     private void jPanelFondoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelFondoMouseClicked
@@ -198,11 +200,9 @@ public class frmSolicitarPlacas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonSolicitar;
-    private javax.swing.JButton jButtonVerificarDueno;
     private javax.swing.JButton jButtonVolver;
     private javax.swing.JLabel jLabelColor;
     private javax.swing.JLabel jLabelDatosPersonales;
-    private javax.swing.JLabel jLabelDueno;
     private javax.swing.JLabel jLabelLinea;
     private javax.swing.JLabel jLabelMarca;
     private javax.swing.JLabel jLabelModelo;
@@ -211,11 +211,11 @@ public class frmSolicitarPlacas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelRFCDueño;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelFondo;
-    private javax.swing.JTextField jTextFieldMaterno;
-    private javax.swing.JTextField jTextFieldNombre;
+    private javax.swing.JTextField jTextFieldColor;
+    private javax.swing.JTextField jTextFieldLinea;
+    private javax.swing.JTextField jTextFieldMarca;
+    private javax.swing.JTextField jTextFieldModelo;
     private javax.swing.JTextField jTextFieldNumeroSerie;
-    private javax.swing.JTextField jTextFieldPaterno;
     private javax.swing.JTextField jTextFieldRFCDueño;
-    private javax.swing.JTextField jTextFieldTelefono1;
     // End of variables declaration//GEN-END:variables
 }

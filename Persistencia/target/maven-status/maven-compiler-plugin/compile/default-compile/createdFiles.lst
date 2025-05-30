@@ -1,11 +1,7 @@
 DAO\LicenciaDAO.class
-Interfaces\IPlacaDAO.class
 Interfaces\ILicenciaDAO.class
-DAO\PlacaDAO.class
 Interfaces\IPersonaDAO.class
 Excepciones\PersistenciaException.class
-com\mycompany\persistencia\Persistencia.class
-Encriptador\Encriptador.class
 DAO\PersonaDAO.class
 DAO\AutomovilDAO.class
 Conexion\Conexion.class

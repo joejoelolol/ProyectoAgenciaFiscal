@@ -49,6 +49,15 @@ public class PlacaDTO {
         this.tipoAuto = tipoAuto;
         this.fechaEmision = fechaEmision;
     }
+    public PlacaDTO(String tipoAuto, Date fechaRecepcion) {
+        this.tipoAuto = tipoAuto;
+    }
+    public PlacaDTO(String tipoAuto,Automovil numeroSerie) {
+        this.tipoAuto = tipoAuto;
+    }
+    public PlacaDTO(String tipoAuto) {
+        this.tipoAuto = tipoAuto;
+    }
     public PlacaDTO(String estado, String tipoAuto,Date fechaEmision, Date fechaRecepcion) {
         this.estado = estado;
         this.tipoAuto = tipoAuto;
