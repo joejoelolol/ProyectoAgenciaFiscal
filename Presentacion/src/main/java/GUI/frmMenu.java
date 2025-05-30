@@ -125,7 +125,8 @@ public class frmMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSolicitarPlacasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSolicitarPlacasActionPerformed
-        // TODO add your handling code here:
+        ControlGUI.getInstancia().mostrarSolicitarPlacas();
+        this.dispose();
     }//GEN-LAST:event_jButtonSolicitarPlacasActionPerformed
 
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed

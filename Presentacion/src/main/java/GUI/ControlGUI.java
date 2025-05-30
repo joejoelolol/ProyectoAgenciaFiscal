@@ -38,11 +38,13 @@ public class ControlGUI {
     private static ControlGUI instancia;
     frmMenu menu;
     frmRegistro registro;
+    frmSolicitarPlacas solicitarPlacas;
     IPersonaBO MetodosPersona = new PersonaBO();
     IAutomovilBO MetodosAutomovil = new AutomovilBO();
     IPlacaBO MetodosPlaca = new PlacaBO();
     ILicenciaBO MetodosLicencia = new LicenciaBO();
-
+    int autoExistente = 0;
+    int diferenteDueño = 0;
     public ControlGUI() {
     }
 
@@ -69,6 +71,14 @@ public class ControlGUI {
         this.registro = new frmRegistro();
         this.registro.setLocationRelativeTo(null);
         this.registro.setVisible(true);
+    }
+    /**
+     * Muestra el formulario de solicitarPlacas.
+     */
+    public void mostrarSolicitarPlacas() {
+        this.solicitarPlacas = new frmSolicitarPlacas();
+        this.solicitarPlacas.setLocationRelativeTo(null);
+        this.solicitarPlacas.setVisible(true);
     }
 
     public boolean registrarPersona(String rfc,String nombre, String apellidoPaterno, String apellidoMaterno, String telefono, Date fechaNacimiento, String tipo) throws NegocioException {
@@ -119,4 +129,16 @@ public class ControlGUI {
         throw new NegocioException("Error al registrar");
     }
     }
+    public boolean AutomovilPlacas(String numeroSerie, String rfc) throws NegocioException{
+        this.autoExistente=0;
+        List<AutomovilDTO> automoviles = this.MetodosAutomovil.obtenerAutomoviles();
+        for (int i = 0; i < automoviles.size(); i++) {
+            if (automoviles.get(i).getNumeroSerie().equalsIgnoreCase(numeroSerie)) {
+                this.autoExistente= 1; //Si es 1, el auto existe en la bd;
+            }
+            if (automoviles.get(i).getRfcDueno().getRfc().equalsIgnoreCase(rfc)) {
+                this.diferenteDueño = 1; //El auto ya esta registrado y tiene otro dueño.
+            }
+        }
+    return true;}
 }
