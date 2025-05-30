@@ -1,0 +1,12 @@
+Entidades\Placa_.class
+Entidades\Persona.class
+Entidades\Automovil.class
+Entidades\Automovil_.class
+Entidades\Licencia.class
+Entidades\Placa.class
+DTOs\LicenciaDTO.class
+DTOs\AutomovilDTO.class
+DTOs\PersonaDTO.class
+Entidades\Licencia_.class
+DTOs\PlacaDTO.class
+Entidades\Persona_.class

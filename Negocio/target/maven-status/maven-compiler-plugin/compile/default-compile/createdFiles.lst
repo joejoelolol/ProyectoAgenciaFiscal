@@ -1,0 +1,14 @@
+BO\LicenciaBO.class
+BO\AutomovilBO.class
+BO\PersonaBO.class
+Excepciones\NegocioException.class
+Interfaces\IAutomovilBO.class
+Mappers\PersonaMapper.class
+BO\PlacaBO.class
+Mappers\PlacaMapper.class
+Interfaces\IPlacaBO.class
+Mappers\AutomovilMapper.class
+Interfaces\IPersonaBO.class
+Mappers\LicenciaMapper.class
+com\mycompany\negocio\Negocio.class
+Interfaces\ILicenciaBO.class
