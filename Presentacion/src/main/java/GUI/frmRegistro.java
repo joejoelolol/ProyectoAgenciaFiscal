@@ -10,6 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -251,32 +252,44 @@ public class frmRegistro extends javax.swing.JFrame {
 
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
         try {
-            ControlGUI.getInstancia().registrarPersona(
-                    this.jTextFieldRFC.getText(),
+            
+            if (ControlGUI.getInstancia().ValidacionesRegistro(this.jTextFieldRFC.getText(),
                     this.jTextFieldNombre.getText(),
                     this.jTextFieldPaterno.getText(),
                     this.jTextFieldMaterno.getText(),
                     this.jTextFieldTelefono.getText(),
                     Date.from(this.datePickerNacimiento.getDate().atStartOfDay(ZoneId.systemDefault()).toInstant()),
-                    this.jComboBoxTipo.getItemAt(this.jComboBoxTipo.getSelectedIndex())
-            );
-            ControlGUI.getInstancia().mostrarMenuPrincipal();
-            this.dispose();
+                    this.jComboBoxTipo.getItemAt(this.jComboBoxTipo.getSelectedIndex())) == true) {
+
+                ControlGUI.getInstancia().registrarPersona(
+                        this.jTextFieldRFC.getText(),
+                        this.jTextFieldNombre.getText(),
+                        this.jTextFieldPaterno.getText(),
+                        this.jTextFieldMaterno.getText(),
+                        this.jTextFieldTelefono.getText(),
+                        Date.from(this.datePickerNacimiento.getDate().atStartOfDay(ZoneId.systemDefault()).toInstant()),
+                        this.jComboBoxTipo.getItemAt(this.jComboBoxTipo.getSelectedIndex())
+                );
+                ControlGUI.getInstancia().mostrarMenuPrincipal();
+                this.dispose();
+            }
         } catch (NegocioException ex) {
             Logger.getLogger(frmRegistro.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NullPointerException n){
+            JOptionPane.showMessageDialog(rootPane, "Debe llenar todos los campos primero");
         }
     }//GEN-LAST:event_jButtonRegistrarActionPerformed
 
     private void jPanelFondoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelFondoMouseClicked
-      
-        
+
+
     }//GEN-LAST:event_jPanelFondoMouseClicked
 
     private void jComboBoxTipoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxTipoMouseExited
         this.actualizar();
     }//GEN-LAST:event_jComboBoxTipoMouseExited
-    public void actualizar(){
-         Date fechaInicio = new Date(); // fecha actual
+    public void actualizar() {
+        Date fechaInicio = new Date(); // fecha actual
         Date fechaFin;
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(fechaInicio);

@@ -27,11 +27,13 @@ import javax.swing.JOptionPane;
 
 /**
  * Clase central que gestiona la navegación entre las interfaces gráficas del
- * sistema y coordina las operaciones de lógica de negocio. Este
- * controlador se encarga de mostrar ventanas, llamar a las clases BO y
- * actualizar datos en pantalla.
+ * sistema y coordina las operaciones de lógica de negocio. Este controlador se
+ * encarga de mostrar ventanas, llamar a las clases BO y actualizar datos en
+ * pantalla.
+ *
  * @author joelr
  */
+
 public class ControlGUI {
 
     // Instancia
@@ -141,4 +143,33 @@ public class ControlGUI {
             }
         }
     return true;}
+      public boolean ValidacionesRegistro(String rfc,String nombre, String apellidoPaterno, String apellidoMaterno, String telefono, Date fechaNacimiento, String tipo) throws NegocioException {
+        boolean seguir = false; // Define si el proceso de registro continua.
+        //Validacion Campos necesarios vacios
+        if (nombre.equalsIgnoreCase("")
+                || apellidoPaterno.equalsIgnoreCase("")
+                || apellidoMaterno.equalsIgnoreCase("")
+                || telefono.equalsIgnoreCase("")
+                || fechaNacimiento == null
+                || tipo.equalsIgnoreCase("")) {
+            JOptionPane.showMessageDialog(null, "Necesita llenar los campos para registrar");
+            throw new NegocioException("Le falta llenar un campo obligatorio");
+            // Validación letras y no numeros.
+        } else if (nombre.matches(".*\\d.*")
+               ||  apellidoPaterno.matches(".*\\d.*")
+               ||  apellidoMaterno.matches(".*\\d.*")) {
+            JOptionPane.showMessageDialog(null, "Debe introducir solo texto en los campos de textos");
+            throw new NegocioException("Hay numeros en los campos de texto");
+            // Validación precio solo puede llevar numeros.
+        } else if (telefono.matches(".*[a-zA-Z].*")) {
+            JOptionPane.showMessageDialog(null, "El campo telefono solo puede llevar numeros");
+            throw new NegocioException("El campo telefono solo puede llevar numeros");
+            //Validación de productoBO ya existente.
 }
+            seguir = true;
+        
+        return seguir;
+    }
+}
+
+  
